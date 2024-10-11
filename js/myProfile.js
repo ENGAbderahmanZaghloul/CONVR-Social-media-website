@@ -240,7 +240,7 @@ const appendAlert = (message, type) => {
         mainName.innerHTML = response.data.data.name;
         postSpan.innerHTML = response.data.data.posts_count;
         comentSpan.innerHTML = response.data.data.comments_count;
-        posrUserNameSpan.innerHTML = `${response.data.data.name}'s `
+        posrUserNameSpan.innerHTML = `${response.data.data.name}'s posts `
     })
     }
     
