@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONVR</title>
+    <!-- import bootstrap -->
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <head>
+        <script src="./node_modules/axios/dist/axios.min.js"></script>
+    </head>
+
+
+</head>
+
+<body>
+<!-- loader -->
+<article class="loader" id="loader">
+<div class="lds-ellipsis">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</article>
+    <!--logii=n modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Username:</label>
+                            <input type="text" class="form-control" id="username-input" value="boda5555">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input type="password" class="form-control" id="password-input" value="123456">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="login-btn" onclick="getParams()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- | modal | -->
+
+
+    <!-- register modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Register A New User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input type="text" placeholder="Name" class="form-control" id="register-name-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Username:</label>
+                            <input type="text" placeholder="@yyy" class="form-control" id="register-username-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="email" placeholder="..@email.com" class="form-control"
+                                id="register-email-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Password:</label>
+                            <input type="password" placeholder="******" class="form-control"
+                                id="register-password-input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Profile-Image:</label>
+                            <input type="file" class="form-control" id="register-image-input">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="login-btn"
+                        onclick="registerClick()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- | modal | -->
+
+    <!-- add post btn modal -->
+    <div class="modal fade" id="addPostmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="headPostModal">Create A New Post</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Title:</label>
+                            <input type="text" class="form-control" id="create-post-input">
+
+                            <input type="hidden" id="post-id-input" value="">
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="body" id="create-body" class="w-100" rows="4" maxlength="200"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Image</label>
+                            <input type="file" placeholder="Name" class="form-control" id="create-post-img">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="create-btn"
+                        onclick="createAnewPost()">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- delete post btn modal -->
+    <div class="modal fade" id="deltePostmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="headPostModal">
+                        Are You Sure.. you want to delete this post
+                        <span id="deletePostName"></span>
+                    </h1>
+                    <input type="hidden" value="" id="delete-hidden-input">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="create-btn"
+                        onclick="confirmDelte()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- | modal | -->
+
+    <!-- alert -->
+    <div id="success-alert" class="alertMsg show fade "></div>
+    <!-- |alert| -->
+
+    <!-- navbar -->
+    <div class="container ">
+        <div class="d-flex justify-content-center">
+            <!-- nav bar bg-color=> bg-body-tertiary -->
+            <nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded-bottom pt-2 col-8">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">CONVR</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active primary" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link primary" onclick="profileBtn()" style="cursor: pointer;">Profile</a>
+                            </li>
+
+                        </ul>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal"
+                            class="btn btn-outline-primary mx-2" id="main-login-btn">login</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#registerModal"
+                            class="btn btn-outline-primary" id="main-register-btn">Register</button>
+                        <div hidden class="user-content" id="user-content">
+                            <img id="ui-user-image" class=" user-img border border-4"
+                                src="./images/profile-pics/photo_2023-11-01_21-16-48.jpg" alt="">
+                            <span id="nav-user-name">@Abdu</span>
+                        </div>
+                        <button type="button" class="btn btn-outline-primary log-out" id="logout-btn">logout</button>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+
+
+    </div>
+
+    <!-- home page -->
+    <div class="container">
+        <!-- posts -->
+        <div class="d-flex justify-content-center mt-5">
+            <section class="posts col-8" id="posts">
+                <!-- post -->
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <img id="user-img" class="border border-4"
+                            src="" alt="">
+                        <span id="user-name"></span>
+                        <button class="btn edit-post btn-outline-primary "></button>
+                    </div>
+                    <div class="card-body">
+                        <img id="post-img" class="w-100" src="" alt="">
+                        <h6 id="post-time" class="text-body-tertiary mt-1"></h6>
+                        <h5 id="post-title"></h5>
+                        <p id="post-body"></p>
+                        <hr>
+                        <div class="comts">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chat-square" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                            </svg>
+                            <span>
+                                
+                                <span id="post-tags">
+                                    <button class="btn btn-sm rounded-5 tags">  </button>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- |post| -->
+
+            </section>
+        </div>
+
+        <!-- | posts | -->
+    </div>
+    <!--  -->
+
+    <!-- add post btn -->
+    <div class="add-btn shadow-sm" hidden id="addBtn" onclick="createPostBtn()">
+        <!-- data-bs-toggle="modal" data-bs-target="#addPostmodel" ارتباط الئر بالمودال -->
+        +
+    </div>
+    <!-- add post btn -->
+</body>
+<script src="js/main.js"></script>
+
+</html>

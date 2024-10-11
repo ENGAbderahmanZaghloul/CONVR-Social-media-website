@@ -1,0 +1,360 @@
+:root {
+    --primary-color: #4A90E2;
+    /* أزرق فاتح */
+    --secondary-color: #F57C00;
+    /* برتقالي */
+    --accent-color: #4CAF50;
+    /* أخضر فاتح */
+    --highlight-color: #8E24AA;
+    /* بنفسجي */
+    /* --neutral-color: #424242; */
+    --neutral-color: #f0ecff;
+    /* رمادي داكن */
+    --text-color: white;
+    /* لون الكتابة الرئيسي */
+}
+
+body {
+    background-color: var(--neutral-color);
+    /* color: var(--text-color); */
+    font-family: Arial, sans-serif;
+    /* نوع الخط */
+}
+
+
+textarea {
+    border-radius: 10px;
+    resize: none;
+}
+
+textarea:focus {
+    border-color: var(--accent-color) !important;
+    transform: scale(1.1);
+}
+
+.container {
+    /* background-color: var(--primary-color); */
+
+}
+
+
+/* navbar */
+
+
+.btn-outline-primary {
+    color: var(--highlight-color);
+    /* لون النص للأزرار */
+    border-color: var(--highlight-color);
+    /* لون الإطار للأزرار */
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--highlight-color);
+    /* لون الخلفية عند التمرير */
+    color: var(--text-color);
+    /* لون النص عند التمرير */
+}
+
+.navbar .navbar-brand {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    /* لون النص */
+    transition: color 0.3s ease;
+    /* تأثير انتقال اللون */
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: 700;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0c72e7;
+    /* تغيير اللون عند التمرير */
+}
+
+/* posts */
+.card .card-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.posts .card .card-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.card-body {
+    cursor: pointer;
+}
+
+.posts .card .card-header span {
+    font-weight: bold;
+}
+
+.log-out {
+    visibility: hidden;
+}
+
+.btn-outline-primary.log-out {
+    color: var(--secondary-color);
+    /* لون النص للأزرار */
+    border-color: var(--secondary-color);
+    /* لون الإطار للأزرار */
+}
+
+.btn-outline-primary.log-out:hover {
+    background-color: var(--secondary-color);
+    /* لون الخلفية عند التمرير */
+    color: var(--text-color);
+    /* لون النص عند التمرير */
+}
+
+/*| posts | */
+
+.alertMsg {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 30%;
+    z-index: 9999999999;
+}
+
+
+.tags {
+    color: var(--accent-color);
+    /* لون النص للأزرار */
+    border-color: var(--accent-color);
+    /* لون الإطار للأزرار */
+}
+
+.tags:hover {
+    background-color: var(--accent-color);
+    /* لون الخلفية عند التمرير */
+    color: var(--text-color);
+    /* لون النص عند التمرير */
+}
+
+.add-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 600;
+    z-index: 999999999999;
+    cursor: pointer;
+}
+
+.user-content {
+    display: flex;
+}
+
+
+/* 2 */
+.comments {
+    background-color: var(--neutral-color);
+}
+
+.comment {
+    background-color: var(--highlight-color);
+    opacity: 0.9;
+}
+
+.comment:hover {
+    background-color: var(--highlight-color);
+    opacity: 1;
+}
+
+.add-comment {
+    display: flex;
+}
+
+.add-comment input {
+    WIDTH: 100%;
+    border: none;
+    border-right: 1px solid var(--neutral-color);
+    border-width: medium;
+}
+
+
+
+.btn-outline-primary.send-comment {
+    color: var(--primary-color);
+    /* لون النص للأزرار */
+    border-color: var(--primary-color);
+    /* لون الإطار للأزرار */
+}
+
+.btn-outline-primary.send-comment:hover {
+    background-color: var(--primary-color);
+    /* لون الخلفية عند التمرير */
+    color: var(--text-color);
+    /* لون النص عند التمرير */
+}
+
+
+.btn-outline-primary.edit-post {
+    color: var(--accent-color);
+    /* لون النص للأزرار */
+    border-color: var(--accent-color);
+    /* لون الإطار للأزرار */
+}
+
+.btn-outline-primary.edit-post:hover {
+    background-color: var(--accent-color);
+    /* لون الخلفية عند التمرير */
+    color: var(--text-color);
+    /* لون النص عند التمرير */
+}
+
+.edit-post {
+    float: right;
+}
+
+.profile-head-img {
+    width: 120px !important;
+    height: 120px;
+    border-radius: 50%;
+    margin: auto 2px;
+}
+
+.num-info {
+    color: var(--neutral-color);
+    font-weight: 100;
+}
+
+.num-span {
+    color: var(--secondary-color);
+    font-size: 50px;
+}
+
+
+/* loader style */
+.loader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto auto;
+    width: 100px;
+    height: 25px;
+    opacity: 0.95;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--neutral-color);
+    z-index: 999999999999;
+}
+
+.lds-ellipsis,
+.lds-ellipsis div {
+    box-sizing: border-box;
+}
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ellipsis div {
+    position: absolute;
+    top: 33.33333px;
+    width: 13.33333px;
+    height: 13.33333px;
+    border-radius: 50%;
+    background: currentColor;
+    background-color: var(--primary-color);
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes lds-ellipsis3 {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+/* media query */
+@media(max-width:770px) {
+    #main-user-info,
+    .counters{
+        width: 100%;
+    }
+
+    /* .user-content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    } */
+}
